@@ -127,7 +127,6 @@ Session::Impl::Impl() : curl_(new CurlHolder()) {
     curl_easy_setopt(curl_->handle, CURLOPT_NOPROGRESS, 1L);
     curl_easy_setopt(curl_->handle, CURLOPT_ERRORBUFFER, curl_->error.data());
     curl_easy_setopt(curl_->handle, CURLOPT_COOKIEFILE, "");
-    curl_easy_setopt(curl_->handle, CURLOPT_ACCEPT_ENCODING, "identity");
 #ifdef CPR_CURL_NOSIGNAL
     curl_easy_setopt(curl_->handle, CURLOPT_NOSIGNAL, 1L);
 #endif
@@ -747,7 +746,7 @@ void Session::Impl::prepareCommon() {
 #if LIBCURL_VERSION_MAJOR >= 7
 #if LIBCURL_VERSION_MINOR >= 21
     /* enable all supported built-in compressions */
-    curl_easy_setopt(curl_->handle, CURLOPT_ACCEPT_ENCODING, "");
+    curl_easy_setopt(curl_->handle, CURLOPT_ACCEPT_ENCODING, "identity");
 #endif
 #endif
 
